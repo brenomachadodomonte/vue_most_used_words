@@ -42,6 +42,10 @@ export default {
   color: #DC143CFF;
 
   font-size: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>
