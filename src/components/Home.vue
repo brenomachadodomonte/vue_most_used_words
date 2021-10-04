@@ -18,21 +18,23 @@
 </template>
 
 <script>
+import { ipcRenderer } from 'electron';
 import Pill from "./Pill";
 export default {
   name: 'Home',
   components:  { Pill },
   data: () => ({
     files: [],
-    groupedWords: [
-      {name: 'i', amount: 1234},
-      {name: 'you', amount: 900},
-      {name: 'he', amount: 853},
-    ]
+    groupedWords: []
   }),
   methods: {
     processSubtitles() {
       console.log(this.files);
+
+      ipcRenderer.send('process-subtitles', this.files);
+      ipcRenderer.on('process-subtitles', (event, resp) => {
+          this.groupedWords = resp;
+      });
     }
   }
 }
