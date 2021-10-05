@@ -6,7 +6,8 @@ module.exports = rows => {
                                 .map(removeTags) // remove tags html
                                 .reduce(mergeRows) // join rows
                                 .split(' ') // split words
-                                .map(word => word.toLowerCase()); // lowercase every word
+                                .map(word => word.toLowerCase()) // lowercase every word
+                                .map(word => word.replace('"', '')); // remove quotes
 
            resolver(words);
        } catch (e){
