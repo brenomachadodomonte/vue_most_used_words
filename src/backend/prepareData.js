@@ -1,10 +1,12 @@
 module.exports = rows => {
     return new Promise((resolver, reject) => {
        try {
-           const words = rows
-                            .filter(filterValidRow)
-                            .map(removePonctuation)
-                            .map(removeTags);
+           const words = rows.filter(filterValidRow) // filter only valid rows
+                                .map(removePonctuation) // remove ponctuation
+                                .map(removeTags) // remove tags html
+                                .reduce(mergeRows) // join rows
+                                .split(' ') // split words
+                                .map(word => word.toLowerCase()); // lowercase every word
 
            resolver(words);
        } catch (e){
@@ -28,3 +30,4 @@ function filterValidRow(row){
 
 const removePonctuation = row => row.replace(/[,?!.-]/g,'');
 const removeTags = row => row.replace(/(<[^>]+)>/ig, '').trim();
+const mergeRows = (fullText, row) => `${fullText} ${row}`;
