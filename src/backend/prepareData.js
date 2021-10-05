@@ -1,10 +1,24 @@
 module.exports = rows => {
     return new Promise((resolver, reject) => {
        try {
+           const words = rows.filter(filterValidRow);
 
-           resolver(rows);
+           resolver(words);
        } catch (e){
            reject(e);
        }
     });
+}
+
+function filterValidRow(row){
+    //Check if it's not number
+    const notNumber = !parseInt(row.trim());
+
+    //Not empty line
+    const notEmpty = !!row.trim();
+
+    //Not an interval
+    const notInterval = !row.includes('-->');
+
+    return notNumber && notEmpty && notInterval;
 }
