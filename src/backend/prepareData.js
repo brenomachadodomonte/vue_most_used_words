@@ -1,7 +1,7 @@
 module.exports = rows => {
     return new Promise((resolver, reject) => {
        try {
-           const words = rows.filter(filterValidRow);
+           const words = rows.filter(filterValidRow).map(removePonctuation);
 
            resolver(words);
        } catch (e){
@@ -22,3 +22,5 @@ function filterValidRow(row){
 
     return notNumber && notEmpty && notInterval;
 }
+
+const removePonctuation = row => row.replace(/[,?!.-]/g,'');
