@@ -1,24 +1,23 @@
-# vue_most_used_words
+# Vue Most Used Words
+A Desktop application made with Electron and Vueto read SRT subtitles in order to show the most used words.
 
-## Project setup
-```
+## Screenshots
+![Login](demo/demo.gif)
+
+## Dependencies
+- Electron
+- VueJS
+
+## Dev dependencies
+To run on dev environment run:
+
+```sh
+npm install -g @vue/cli
 npm install
-```
+npm npm run electron:serve
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
-```
+> The Application will run on Desktop
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## See more
+For more information about me or other projects: [brenomachado.dev](https://brenomachado.dev)
